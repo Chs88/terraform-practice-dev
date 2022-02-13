@@ -1,8 +1,17 @@
+provider "aws" {
+  region = var.default_region
+  shared_credentials_files = var.credentials_path
+  profile = var.profile_name
+}
 
-###test resource
-resource "aws_instance" "test" {
-  ami           = "ami-0015a39e4b7c0966f" 
-  instance_type = "t2.micro"
+
+module "ec2" {
+  
+  source = "./modules/ec2"
 
 }
 
+module "vpc" {
+
+  source = "./modules/vpc"
+}
