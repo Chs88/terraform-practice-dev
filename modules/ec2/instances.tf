@@ -1,3 +1,7 @@
+###TO DO: Change this module to be reusable and declare the instances in the root main.tf file. 
+## add the subnets to the module in a reusable way
+
+
 ###test resource
 resource "aws_instance" "test1" {
   ami           = data.aws_ami.ubuntu_ami.id 
