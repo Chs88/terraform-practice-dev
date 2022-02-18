@@ -5,6 +5,8 @@ provider "aws" {
 }
 
 
+
+
 module "ec2" {
   
   source = "./modules/ec2"
@@ -14,4 +16,12 @@ module "ec2" {
 module "vpc" {
 
   source = "./modules/vpc"
+}
+
+output "ubuntu_ami" {
+  value = module.ec2.ubuntu_ami
+}
+
+output "gw_ip" {
+  value = module.vpc.internet_gw_ip
 }
