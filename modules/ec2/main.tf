@@ -3,12 +3,25 @@
 
 
 ###test resource
-resource "aws_instance" "test1" {
+resource "aws_instance" "project_instance" {
   ami           = data.aws_ami.ubuntu_ami.id 
+
   instance_type = var.ec2_instance_type
-  subnet_id = module.vpc.aws_subnet.dev-private.id
-  tags = {
-    name = "test1"
+
+  #subnet_id = module.vpc.aws_subnet.dev-private.id
+  
+
+  tags = { ##tag everything for easy code readability
+
+    Name = "Project1-${var.ec2_env}-Webserver"
+
+    Environment = var.ec2_env
+
+    Project = "Project1"
+
+    ManagedBy = "Terraform"
+
+    Role = var.ec2_role
   }
 
 }
