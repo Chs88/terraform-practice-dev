@@ -15,7 +15,18 @@ data "aws_ami" "ubuntu_ami" {
 
 
 
-variable "ec2_instance_type" {
+variable "ec2_instance_size" {
+
+    type = string
+
+    description = "the size of the ec2 instance"
+
     default = "t2.micro"
 }
 
+
+variable "env" {
+
+  type = string
+
+  description = "infrastructure environment"
