@@ -4,9 +4,9 @@ provider "aws" {
   profile = var.profile_name
 }
 
+### Ec2 instane for the webserver that will receive a public IP
 
-
-module "ec2" {
+module "web_server" {
   
   source = "./modules/ec2"
 
@@ -20,6 +20,19 @@ module "ec2" {
 
 }
 
+##Ec2 instance for the machine that will run our database
+
+module "database" {
+
+  source = "./modules/ec2"
+
+  ec2_env = var.ec2_env
+
+  ec2_role = "database"
+
+
+}
+
 module "vpc" {
 
   source = "./modules/vpc"
@@ -28,7 +41,7 @@ module "vpc" {
 # output "ubuntu_ami" {
 #   value = module.ec2.ubuntu_ami
 # }
-
+ 
 # output "gw_ip" {
 #   value = module.vpc.internet_gw_ip
 # }
