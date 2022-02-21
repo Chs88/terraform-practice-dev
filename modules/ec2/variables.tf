@@ -25,7 +25,7 @@ variable "ec2_instance_type" {
 }
 
 
-variable "ec2_env" {
+variable "infra_env" {
 
   type = string
 

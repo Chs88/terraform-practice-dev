@@ -1,43 +1,62 @@
 ##Creating the VPC
-##It will use 10.0.0.0/16 CIDR block for now
 
-resource "aws_vpc" "main-vpc" {
+resource "aws_vpc" "main_vpc" {
   cidr_block       = var.vpc_cidr
   instance_tenancy = "default"
 
   tags = {
-    Name = "main-vpc"
+    Name = "Project1-${var.infra_env}-vpc"
+
+    Environment = var.infra_env
+
+    Project = "Project1"
+
+    ManagedBy = "Terraform"
   }
 }
 
-##Internet gateway
 
-resource "aws_internet_gateway" "internet-gw" {
-  vpc_id = aws_vpc.main-vpc.id
-
-  tags = {
-    Name = "internet-gw"
-  }
-}
-
+##For this Project we will only create 2 subnets and not one for each availability zone
+## That will happen in a later practice
 ##Private subnet that will not have inbound internet access
 
-resource "aws_subnet" "dev-private" {
-  vpc_id     = aws_vpc.main-vpc.id
+resource "aws_subnet" "private" {
+
+  vpc_id     = aws_vpc.main_vpc.id
+
+###This cidrsubnet() function will help us deviding the ip addresses
   cidr_block = cidrsubnet(var.vpc_cidr,8, 0)
 
   tags = {
-    Name = "dev-private"
+    Name = "Project1-${var.infra_env}-private"
+
+    Environment = var.infra_env
+
+    Project = "Project1"
+
+    ManagedBy = "Terraform"
+
+    Role = "private"
   }
 }
 
 ##Public subnet that will have inbound and outbound internet access and will house the NAT gateway
 
-resource "aws_subnet" "dev-public" {
-  vpc_id     = aws_vpc.main-vpc.id
+resource "aws_subnet" "public" {
+  vpc_id     = aws_vpc.main_vpc.id
+
   cidr_block = cidrsubnet(var.vpc_cidr,8, 1)
 
   tags = {
-    Name = "dev-public"
+   
+    Name = "Project1-${var.infra_env}-public"
+
+    Environment = var.infra_env
+
+    Project = "Project1"
+
+    ManagedBy = "Terraform"
+
+    Role = "public"
+    }
   }
-}

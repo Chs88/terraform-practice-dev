@@ -12,7 +12,7 @@ module "web_server" {
 
 
 
-  ec2_env = var.ec2_env
+  infra_env = var.infra_env
 
   ec2_role = "web_server"
 
@@ -26,7 +26,7 @@ module "database" {
 
   source = "./modules/ec2"
 
-  ec2_env = var.ec2_env
+  infra_env = var.infra_env
 
   ec2_role = "database"
 
@@ -36,6 +36,12 @@ module "database" {
 module "vpc" {
 
   source = "./modules/vpc"
+
+  infra_env = var.infra_env
+
+  vpc_cidr = "192.0.0.0/17" ##I am going to half the default amount of IPs for now
+
+  
 }
 
 # output "ubuntu_ami" {

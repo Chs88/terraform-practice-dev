@@ -13,9 +13,9 @@ resource "aws_instance" "project_instance" {
 
   tags = { ##tag everything for easy code readability
 
-    Name = "Project1-${var.ec2_env}-${var.ec2_role}"
+    Name = "Project1-${var.infra_env}-${var.ec2_role}"
 
-    Environment = var.ec2_env
+    Environment = var.infra_env
 
     Project = "Project1"
 
