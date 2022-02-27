@@ -59,7 +59,7 @@ resource "aws_nat_gateway" "nat_gw" {
 
   tags = {
 
-    Name = "Project1-${var.infra_env}-eip"
+    Name = "Project1-${var.infra_env}-nat_gw"
 
     Project = "Project1"
 
