@@ -9,16 +9,16 @@ output "vpc_cidr" {
   
 }
 
-output "vpc_public_subnets" {
+output "vpc_public_subnet" {
   
-    value = aws_subnet.public.cidr_block
+    value = aws_subnet.public.id
 
 }
 
 
-output "vpc_private_subnets" {
+output "vpc_private_subnet" {
   
-    value = aws_subnet.private.cidr_block
+    value = aws_subnet.private.id
 
 }
 
@@ -30,4 +30,6 @@ output "vpc_private_subnets" {
 output "internet_gw_ip" {
     value = aws_internet_gateway.internet_gw.id
 }
+
+
 
