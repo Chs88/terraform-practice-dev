@@ -10,12 +10,13 @@ module "web_server" {
   
   source = "./modules/ec2"
 
-
-
   infra_env = var.infra_env
 
   ec2_role = "web_server"
 
+  subnet = module.vpc.vpc_public_subnet
+
+  # security_groups = module.vpc_vpc_se
 
 
 }
@@ -30,7 +31,7 @@ module "database" {
 
   ec2_role = "database"
 
-
+  subnet = module.vpc.vpc_private_subnet
 }
 
 module "vpc" {
