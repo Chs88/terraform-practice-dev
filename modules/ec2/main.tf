@@ -8,8 +8,9 @@ resource "aws_instance" "project_instance" {
 
   instance_type = var.ec2_instance_type
 
-  #subnet_id = module.vpc.aws_subnet.dev-private.id
+  # subnet_id = modu
   
+  vpc_security_group_ids = var.security_groups
 
   tags = { ##tag everything for easy code readability
 
