@@ -39,3 +39,21 @@ variable "ec2_role" {
   description = "the purpose of the instance"
 
 }
+
+
+variable subnet {
+
+  type = string
+
+  description = "valid subnet to assign the server"
+  
+}
+
+variable security_groups {
+
+  type = list(string)
+
+  description = "security groups to assign to the server"
+
+  default = []
+}
