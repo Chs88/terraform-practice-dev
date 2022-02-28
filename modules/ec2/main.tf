@@ -40,6 +40,7 @@ resource "aws_eip" "webserver_eip" {
   lifecycle {
     ##This is if we want to keep it from destroying. In case the eip gets
     ## connected to a domain for example. For this exercise we will comment this to reduce costs. 
+    
     # prevent_destroy = true 
 
   }
