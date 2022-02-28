@@ -18,7 +18,7 @@ module "web_server" {
 
   create_eip = true
 
-  security_groups = [module.vpc.security_group_public]
+  security_groups = ["${module.vpc.security_group_public}"]
 
 
 }
@@ -37,7 +37,7 @@ module "database" {
 
   create_eip = false
 
-  security_groups = [module.vpc.security_group_private]
+  security_groups = ["${module.vpc.security_group_private}"]
 }
 
 module "vpc" {

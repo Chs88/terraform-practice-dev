@@ -8,7 +8,7 @@ resource "aws_instance" "project_instance" {
 
   instance_type = var.ec2_instance_type
 
-  
+  subnet_id = var.subnet
   
   vpc_security_group_ids = var.security_groups
 
@@ -40,7 +40,7 @@ resource "aws_eip" "webserver_eip" {
   lifecycle {
     ##This is if we want to keep it from destroying. In case the eip gets
     ## connected to a domain for example. For this exercise we will comment this to reduce costs. 
-    
+
     # prevent_destroy = true 
 
   }
