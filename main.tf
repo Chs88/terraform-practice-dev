@@ -16,6 +16,7 @@ module "web_server" {
 
   subnet = module.vpc.vpc_public_subnet
 
+  create_eip = true
   # security_groups = module.vpc_vpc_se
 
 
@@ -32,6 +33,8 @@ module "database" {
   ec2_role = "database"
 
   subnet = module.vpc.vpc_private_subnet
+
+  create_eip = false
 }
 
 module "vpc" {

@@ -57,3 +57,13 @@ variable security_groups {
 
   default = []
 }
+
+variable "create_eip" {
+
+  type = bool
+  
+  default = false
+  
+  description = "Wether to create an Eip or not"
+  
+}
