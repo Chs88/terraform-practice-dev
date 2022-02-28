@@ -17,7 +17,8 @@ module "web_server" {
   subnet = module.vpc.vpc_public_subnet
 
   create_eip = true
-  # security_groups = module.vpc_vpc_se
+
+  security_groups = [module.vpc.security_group_public]
 
 
 }
@@ -35,6 +36,8 @@ module "database" {
   subnet = module.vpc.vpc_private_subnet
 
   create_eip = false
+
+  security_groups = [module.vpc.security_group_private]
 }
 
 module "vpc" {
@@ -48,10 +51,3 @@ module "vpc" {
   
 }
 
-# output "ubuntu_ami" {
-#   value = module.ec2.ubuntu_ami
-# }
- 
-# output "gw_ip" {
-#   value = module.vpc.internet_gw_ip
-# }
